@@ -1,0 +1,27 @@
+{
+  "name": "musicfront",
+  "version": "1.0.0",
+  "description": "A new music marketplace",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jwmann13/musicfront.git"
+  },
+  "keywords": [
+    "music",
+    "instrument",
+    "market",
+    "sales",
+    "node"
+  ],
+  "author": "Jeffrey Mann, Nico Loparco, Cesar Sanches-Vegas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jwmann13/musicfront/issues"
+  },
+  "homepage": "https://github.com/jwmann13/musicfront#readme"
+}
