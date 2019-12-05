@@ -1,10 +1,11 @@
 const express = require('express');
 const exphbrs = require('express-handlebars');
-const path = require('path')
+const path = require('path');
 
 const PORT = process.env.PORT || 8080;
 
 let app = express();
+let db = require('./models');
 
 app.use(express.urlencoded({
     extended: true
@@ -17,10 +18,14 @@ app.engine("handlebars", exphbrs({
 }));
 app.set("view engine", "handlebars");
 
-let routes = require('./controller/homepage_controller');
+let routes = require('./controllers/homepage_controller');
 
 app.use(routes);
 
-app.listen(PORT, () => {
-    console.log('App listening on Port: ' + PORT);
+db.sequelize.sync({
+    force: false
+}).then(() => {
+    app.listen(PORT, () => {
+        console.log('App listening on Port: ' + PORT);
+    })
 })
