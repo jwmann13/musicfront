@@ -1,7 +1,7 @@
 const express = require("express");
 const exphbrs = require("express-handlebars");
 const path = require("path");
-const dummy = require("./dummy/dummyData")
+const dummy = require("./dummy/dummyData");
 
 const PORT = process.env.PORT || 8080;
 
@@ -33,7 +33,7 @@ db.sequelize
     force: true
   })
   .then(() => {
-    db.Product.bulkCreate(dummy)
+    db.Product.bulkCreate(dummy);
     app.listen(PORT, () => {
       console.log("App listening on Port: " + PORT);
     });
