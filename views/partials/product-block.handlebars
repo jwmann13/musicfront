@@ -1,6 +1,15 @@
-<div class="col-3">
-    <p>{{dataValues.name}}</p>
-    <p>{{dataValues.model}}</p>
-    <p>{{dataValues.instrumentFamily}}</p>
-    <p>{{dataValues.name}}</p>
+<div class="col-4">
+    <div class="card">
+        <div class="row no-gutters">
+            <div class="col-md-6">
+                <img src={{dataValues.photo}} class="card-img" alt="...">
+            </div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="/pr"></a>{{dataValues.name}}</h5>
+                    <p class="card-text">{{dataValues.model}} > {{dataValues.instrumentFamily}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
