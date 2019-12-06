@@ -1,8 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   var customer = sequelize.define("Customer", {
-    id: {
-      type: DataTypes.INTEGER
-    },
     userName: {
         type: DataTypes.STRING(45)
     },
