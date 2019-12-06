@@ -69,6 +69,61 @@ router.delete("/api/examples/:id", function(req, res) {
 
 // Products
 
+//Get for all prpoducts
+router.get("/api/products", (req, res) => {
+  db.Product.findAll({}).then(function(product){
+    res.json(product)
+  })
+})
+
+//Get single product by name
+router.get("/api/products/:product", (req, res) => {
+  db.Product.findAll({
+    where: {
+      name: req.params.name
+    }
+  })
+}).then(function(product) {
+  res.json(product)
+})
+
+
+//Get products by category
+router.get("/api/products/category/:category", (req, res) => {
+  db.Product.findAll({
+    where: {
+      category: req.params.category
+    }
+  })
+}).then(function(product) {
+  res.json(product)
+})
+
+//Get products by instrument
+router.get("/api/products/instrument/:instrument", (req, res) => {
+  db.Product.findAll({
+    where: {
+      category: req.params.instrument
+    }
+  })
+}).then(function(product) {
+  res.json(product)
+})
+
+//Get products by color
+router.get("/api/products/color/:color", (req, res) => {
+  db.Product.findAll({
+    where: {
+      color: req.params.color
+    }
+  })
+}).then(function(product) {
+  res.json(product)
+})
+
+
+//Post new products
+
 router.post("/api/product", (req, res) => {
   db.Product.create(req.body).then(dbProduct => {
     res.json(dbProduct);
