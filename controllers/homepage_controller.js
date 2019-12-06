@@ -16,7 +16,7 @@ router.get("/", function(req, res) {
 
 router.get("/product", (req, res) => {
   db.Product.findAll({}).then(dbProduct => {
-    console.log(dbProduct);
+    // console.log(dbProduct);
     res.render("product", {
       product: dbProduct
     });

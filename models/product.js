@@ -20,6 +20,9 @@ module.exports = function(sequelize, dataTypes) {
     },
     rating: {
       type: dataTypes.DECIMAL(2, 1)
+    },
+    photo: {
+      type: dataTypes.STRING(1023)
     }
   });
   return Product;
