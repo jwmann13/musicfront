@@ -123,6 +123,7 @@ router.get("/api/products/color/:color", (req, res) => {
 
 
 //Post new products
+
 router.post("/api/product", (req, res) => {
   db.Product.create(req.body).then(dbProduct => {
     res.json(dbProduct);
