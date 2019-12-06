@@ -30,10 +30,10 @@ app.use(routes);
 
 db.sequelize
   .sync({
-    force: false
+    force: true
   })
   .then(() => {
-    db.Product.bulkCreate(dummy.dummy)
+    db.Product.bulkCreate(dummy)
     app.listen(PORT, () => {
       console.log("App listening on Port: " + PORT);
     });
