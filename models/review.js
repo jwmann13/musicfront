@@ -1,8 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
   var review = sequelize.define("Review", {
-    id: {
-        type: DataTypes.INTEGER
-    },
     title: {
         type: DataTypes.STRING(45)
     },
