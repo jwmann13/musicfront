@@ -71,10 +71,10 @@ router.delete("/api/examples/:id", function(req, res) {
 
 //Get for all prpoducts
 router.get("/api/products", (req, res) => {
-  db.Product.findAll({}).then(function(product){
-    res.json(product)
-  })
-})
+  db.Product.findAll({}).then(function(product) {
+    res.json(product);
+  });
+});
 
 //Get single product by name
 router.get("/api/products/:product", (req, res) => {
@@ -82,11 +82,10 @@ router.get("/api/products/:product", (req, res) => {
     where: {
       name: req.params.name
     }
-  })
-}).then(function(product) {
-  res.json(product)
-})
-
+  }).then(function(product) {
+    res.json(product);
+  });
+});
 
 //Get products by category
 router.get("/api/products/category/:category", (req, res) => {
@@ -94,10 +93,10 @@ router.get("/api/products/category/:category", (req, res) => {
     where: {
       category: req.params.category
     }
-  })
-}).then(function(product) {
-  res.json(product)
-})
+  }).then(function(product) {
+    res.json(product);
+  });
+});
 
 //Get products by instrument
 router.get("/api/products/instrument/:instrument", (req, res) => {
@@ -105,10 +104,10 @@ router.get("/api/products/instrument/:instrument", (req, res) => {
     where: {
       category: req.params.instrument
     }
-  })
-}).then(function(product) {
-  res.json(product)
-})
+  }).then(function(product) {
+    res.json(product);
+  });
+});
 
 //Get products by color
 router.get("/api/products/color/:color", (req, res) => {
@@ -116,11 +115,10 @@ router.get("/api/products/color/:color", (req, res) => {
     where: {
       color: req.params.color
     }
-  })
-}).then(function(product) {
-  res.json(product)
-})
-
+  }).then(function(product) {
+    res.json(product);
+  });
+});
 
 //Post new products
 

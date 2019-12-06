@@ -8,8 +8,8 @@
   },
   "test": {
     "username": "root",
-    "password": "docker",
-    "database": "exampledb",
+    "password": null,
+    "database": "testdb",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
