@@ -31,7 +31,7 @@ module.exports = [
   },
   {
     brand: "strativarius",
-    name: "ver fancy violin",
+    name: "very fancy violin",
     model: "red violin",
     instrumentFamily: "string instrument",
     description: "this things been around forever",
