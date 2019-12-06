@@ -10,7 +10,7 @@ module.exports = function(sequelize, dataTypes) {
       type: dataTypes.STRING
     },
     instrumentFamily: {
-      type: dataTypes.STRING
+      type: dataTypes.ENUM("electric guitar", "acoustic guitar", "bass guitar", "synthesizer", "woodwind", "string instrument", "brass")
     },
     description: {
       type: dataTypes.TEXT
