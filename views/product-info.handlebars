@@ -1,6 +1,11 @@
 <div class="container">
-    <h1 class="display-1">{{product.[0].dataValues.name}}</h1>
+    <div class="row">
+        <img class="col-4" src={{product.[0].dataValues.photo}} alt="">
+        <div class="col-8">
+            <h1 class="display-1">{{product.[0].dataValues.name}}</h1>
+            <h1 class="display-6">Description</h1>
+            <div class="lead">{{product.[0].dataValues.description}}</div>
+        </div>
+    </div>
 
-    <h1 class="display-6">Description</h1>
-    <div class="lead">{{product.[0].dataValues.description}}</div>
 </div>

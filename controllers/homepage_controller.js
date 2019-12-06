@@ -6,10 +6,10 @@ let db = require("../models");
 // HTML ROUTES
 // Load index page
 router.get("/", function(req, res) {
-  db.Example.findAll({}).then(function(dbExamples) {
+  db.Product.findAll({}).then(function(dbProduct) {
     res.render("index", {
       msg: "Welcome!",
-      examples: dbExamples
+      product: dbProduct
     });
   });
 });
