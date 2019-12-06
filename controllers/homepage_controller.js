@@ -16,12 +16,12 @@ router.get("/", function(req, res) {
 
 router.get("/product", (req, res) => {
   db.Product.findAll({}).then(dbProduct => {
-    console.log(dbProduct)
+    console.log(dbProduct);
     res.render("product", {
       product: dbProduct
-    })
-  })
-})
+    });
+  });
+});
 
 // Load example page and pass in an example by id
 router.get("/example/:id", function(req, res) {
@@ -69,12 +69,10 @@ router.delete("/api/examples/:id", function(req, res) {
 
 // Products
 
-
-
 router.post("/api/product", (req, res) => {
   db.Product.create(req.body).then(dbProduct => {
     res.json(dbProduct);
-  })
-})
+  });
+});
 
 module.exports = router;
