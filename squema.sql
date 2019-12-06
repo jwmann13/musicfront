@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS musicFront_DB;
+CREATE DATABASE musicFront_DB;
