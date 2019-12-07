@@ -1,7 +1,7 @@
 module.exports = [
   {
     brand: "gibson",
-    name: "bad guitar",
+    name: "Bad Guitar",
     model: "les paul",
     instrumentFamily: "electric guitar",
     description: "a really bad stinky guitar",
