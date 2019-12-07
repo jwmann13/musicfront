@@ -65,7 +65,7 @@ module.exports = [
     model: "minilogue",
     instrumentFamily: "synthesizer",
     description: "recent powerhouse poly synth from korg",
-    price: "$450.00,
+    price: "$450.00",
     rating: 4.0,
     photo: "http://lorempixel.com/g/200/200"
   },
