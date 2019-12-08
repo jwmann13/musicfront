@@ -6,7 +6,7 @@
             </div>
             <div class="col-md-6">
                 <div class="card-body">
-                    <h5 class="card-title"><a href="/product/info/{{dataValues.id}}" class="product-link" >{{dataValues.name.toLowerCase}}</a></h5>
+                    <h5 class="card-title"><a href="/product/info/{{dataValues.id}}" class="product-link" >{{#toUpperCase dataValues.name}}{{/toUpperCase}}</a></h5>
                     <p class="card-text">{{dataValues.instrumentFamily}} > {{dataValues.brand}} > {{dataValues.model}}</p>
                     <p>${{dataValues.price}}</p>
                 </div>

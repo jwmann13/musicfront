@@ -21,14 +21,17 @@ app.engine(
   exphbrs({
     defaultLayout: "main",
     helpers: {
-      ifeq: function(a, b, options){
-        if (a == b) {
+      ifeq: function(a, b, options) {
+        if (a === b) {
           return options.fn(this);
-          }
+        }
         return options.inverse(this);
       },
       toLowerCase: function(str) {
         return str.toLowerCase();
+      },
+      toUpperCase: function(str) {
+        return str.toUpperCase();
       }
     }
   })
