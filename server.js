@@ -19,7 +19,21 @@ app.use(express.static(path.join(__dirname, "public")));
 app.engine(
   "handlebars",
   exphbrs({
-    defaultLayout: "main"
+    defaultLayout: "main",
+    helpers: {
+      ifeq: function(a, b, options) {
+        if (a === b) {
+          return options.fn(this);
+        }
+        return options.inverse(this);
+      },
+      toLowerCase: function(str) {
+        return str.toLowerCase();
+      },
+      toUpperCase: function(str) {
+        return str.toUpperCase();
+      }
+    }
   })
 );
 app.set("view engine", "handlebars");
