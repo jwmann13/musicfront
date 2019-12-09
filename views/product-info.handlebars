@@ -1,19 +1,21 @@
 <div class="container">
     <div class="row">
-        <img class="col-4" src={{product.[0].dataValues.photo}} alt="">
+        <img class="col-4" src={{product.dataValues.photo}} alt="">
         <div class="col-8">
-              <h1 class="display-1">{{#toUpperCase product.[0].dataValues.name}}{{/toUpperCase}}</h1>
-             <h4 class="display-6">Price</h4>
-            <div class="lead">${{product.[0].dataValues.price}}</div>
+            <h1 class="display-1">{{#toUpperCase product.dataValues.name}}{{/toUpperCase}}</h1>
              <h1 class="display-6">Brand</h1>
-            <div class="lead">{{product.[0].dataValues.brand}}</div>
-             <h4 class="display-6">Model</h4>
-            <div class="lead">{{product.[0].dataValues.model}}</div>
-            <h4 class="display-6">Description</h4>
-            <div class="lead">{{product.[0].dataValues.description}}</div>
-            {{!-- below we need to define the path for reviews  --}}
-            <h4 class="display-6"><a href="/product/info/{{dataValues.id}}">Reviews</a></h4>
-            <div class="lead">{{product.[0].dataValues.rating}}</div>
+            <div class="lead">{{product.dataValues.brand}}</div>
+             <h1 class="display-6">Model</h1>
+            <div class="lead">{{product.dataValues.model}}</div>
+            <h1 class="display-6">Description</h1>
+            <div class="lead">{{product.dataValues.description}}</div>
+            <h1 class="display-6">Reviews</h1>
+            <div class="lead">
+                {{product.dataValues.rating}}
+                {{#each product.dataValues.Reviews}}
+                {{> review-block}}
+                {{/each}}
+            </div>
         </div>
     </div>
 

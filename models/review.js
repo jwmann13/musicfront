@@ -1,17 +1,20 @@
 module.exports = function(sequelize, DataTypes) {
-  var review = sequelize.define("Review", {
+  var Review = sequelize.define("Review", {
     title: {
       type: DataTypes.STRING(45)
     },
     description: {
       type: DataTypes.TEXT
-    },
-    productID: {
-      type: DataTypes.INTEGER
-    },
-    reviewID: {
-      type: DataTypes.INTEGER
     }
   });
-  return review;
+
+  Review.associate = function(models) {
+    Review.belongsTo(models.Product, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
+  return Review;
 };

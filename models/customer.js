@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var customer = sequelize.define("Customer", {
+  var Customer = sequelize.define("Customer", {
     userName: {
       type: DataTypes.STRING(45)
     },
@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     lastName: {
       type: DataTypes.STRING(45)
     },
-    addres: {
+    address: {
       type: DataTypes.STRING(100)
     },
     email: {
@@ -23,5 +23,12 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER
     }
   });
-  return customer;
+
+  Customer.associate = function(models) {
+    Customer.hasOne(models.Order, {
+      onDelete: "cascade"
+    });
+  };
+
+  return Customer;
 };

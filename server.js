@@ -47,7 +47,9 @@ db.sequelize
     force: true
   })
   .then(() => {
-    db.Product.bulkCreate(dummy);
+    db.Product.bulkCreate(dummy.products);
+    db.Customer.bulkCreate(dummy.customers);
+    db.Review.bulkCreate(dummy.reviews);
     app.listen(PORT, () => {
       console.log("App listening on Port: " + PORT);
     });
