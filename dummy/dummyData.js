@@ -75,7 +75,8 @@ module.exports = {
       name: "decent trumpet",
       model: "590S-S",
       instrumentFamily: "brass",
-      description: "play the impression that i get by the mighty mighty bosstones",
+      description:
+        "play the impression that i get by the mighty mighty bosstones",
       price: 150.0,
       rating: 1.8,
       photo: "http://lorempixel.com/g/200/200"
@@ -85,7 +86,8 @@ module.exports = {
       name: "vintage acoustic",
       model: "D-18 Authentic 1939",
       instrumentFamily: "acoustic guitar",
-      description: "thankfully not the one kurt russel smashed in hateful eight",
+      description:
+        "thankfully not the one kurt russel smashed in hateful eight",
       price: 986.3,
       rating: 4.9,
       photo: "http://lorempixel.com/g/200/200"
