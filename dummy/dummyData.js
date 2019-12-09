@@ -1,11 +1,11 @@
 module.exports = [
   {
-    brand: "Gibson",
-    name: "Bad Guitar",
+    brand: "gibson",
+    name: "bad guitar",
     model: "les paul",
     instrumentFamily: "electric guitar",
     description: "a really bad stinky guitar",
-    price: "$10.00",
+    price: 10.0,
     rating: 1.2,
     photo: "http://lorempixel.com/g/200/200"
   },
@@ -15,7 +15,7 @@ module.exports = [
     model: "stratocaster",
     instrumentFamily: "electric guitar",
     description: "a really good guitar you gotta love it",
-    price: "$103.50",
+    price: 103.5,
     rating: 4.6,
     photo: "http://lorempixel.com/g/200/200"
   },
@@ -25,7 +25,7 @@ module.exports = [
     model: "dx-7",
     instrumentFamily: "synthesizer",
     description: "bleep bloop i've had the time of my life bleep bloop",
-    price: "2000.00",
+    price: 2000.0,
     rating: 3.9,
     photo: "http://lorempixel.com/g/200/200"
   },
@@ -35,7 +35,7 @@ module.exports = [
     model: "red violin",
     instrumentFamily: "string instrument",
     description: "this things been around forever",
-    price: "$1020.90",
+    price: 1020.9,
     rating: 4.2,
     photo: "http://lorempixel.com/g/200/200"
   },
@@ -45,7 +45,7 @@ module.exports = [
     model: "4000 bass",
     instrumentFamily: "bass guitar",
     description: "i think paul mccartney played this guy",
-    price: "$500.00",
+    price: 500.0,
     rating: 2.9,
     photo: "http://lorempixel.com/g/200/200"
   },
@@ -55,7 +55,7 @@ module.exports = [
     model: "YAS-827",
     instrumentFamily: "woodwind",
     description: "toot toot saxamaphone",
-    price: "$368.30",
+    price: 368.3,
     rating: 3.8,
     photo: "http://lorempixel.com/g/200/200"
   },
@@ -65,7 +65,7 @@ module.exports = [
     model: "minilogue",
     instrumentFamily: "synthesizer",
     description: "recent powerhouse poly synth from korg",
-    price: "$450.00",
+    price: 450.0,
     rating: 4.0,
     photo: "http://lorempixel.com/g/200/200"
   },
@@ -76,7 +76,7 @@ module.exports = [
     instrumentFamily: "brass",
     description:
       "play the impression that i get by the mighty mighty bosstones",
-    price: "$150.00",
+    price: 150.0,
     rating: 1.8,
     photo: "http://lorempixel.com/g/200/200"
   },
@@ -86,7 +86,7 @@ module.exports = [
     model: "D-18 Authentic 1939",
     instrumentFamily: "acoustic guitar",
     description: "thankfully not the one kurt russel smashed in hateful eight",
-    price: "$986.30",
+    price: 986.3,
     rating: 4.9,
     photo: "http://lorempixel.com/g/200/200"
   }
