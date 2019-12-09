@@ -33,5 +33,17 @@ module.exports = function(sequelize, dataTypes) {
       type: dataTypes.STRING(1023)
     }
   });
+
+  Product.associate = function(models) {
+    Product.hasMany(models.Review, {
+      onDelete: "cascade"
+    });
+    Product.belongsTo(models.Order, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
   return Product;
 };

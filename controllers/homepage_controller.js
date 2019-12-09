@@ -37,10 +37,11 @@ router.get("/product/instrument/:family", (req, res) => {
 });
 
 router.get("/product/info/:id", (req, res) => {
-  db.Product.findAll({
+  db.Product.findOne({
     where: {
       id: req.params.id
-    }
+    },
+    include: [db.Review]
   }).then(dbProduct => {
     // console.log(dbProduct);
     res.render("product-info", {
