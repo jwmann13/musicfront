@@ -38,10 +38,11 @@ module.exports = function(sequelize, dataTypes) {
     Product.hasMany(models.Review, {
       onDelete: "cascade"
     });
-    Product.belongsTo(models.Order, {
-      foreignKey: {
-        allowNull: false
-      }
+    Product.belongsToMany(models.Order, {
+      through: "OrderItem"
+      // foreignKey: {
+      //   allowNull: false
+      // }
     });
   };
 

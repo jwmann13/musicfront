@@ -6,7 +6,6 @@ module.exports = function(sequelize, DataTypes) {
     userPassword: {
       type: DataTypes.STRING(45)
     },
-
     firstName: {
       type: DataTypes.STRING(45)
     },
@@ -17,10 +16,16 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(100)
     },
     email: {
-      type: DataTypes.STRING(45)
+      type: DataTypes.STRING(45),
+      validate: {
+        isEmail: true
+      }
     },
     cardNumber: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      validate: {
+        isCreditCard: true
+      }
     }
   });
 
