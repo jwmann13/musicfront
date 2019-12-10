@@ -39,7 +39,7 @@ module.exports = function(sequelize, dataTypes) {
       onDelete: "cascade"
     });
     Product.belongsToMany(models.Order, {
-      through: "OrderItem",
+      through: "OrderItem"
       // foreignKey: {
       //   allowNull: false
       // }
