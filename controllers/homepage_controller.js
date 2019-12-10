@@ -1,4 +1,5 @@
 const express = require("express");
+const passport = require("passport")
 
 let router = express.Router();
 let db = require("../models");
@@ -33,6 +34,12 @@ router.get("/checkout", (req, res) => {
     });
   });
 });
+
+router.get("/login", (req, res) => {
+  res.render("login", {
+    
+  })
+})
 
 // list of products by instrument family
 router.get("/product/instrument/:family", (req, res) => {
@@ -106,7 +113,7 @@ router.get("/api/products/instrument/:instrument", (req, res) => {
       instrumentFamily: req.params.instrument
     }
   }).then(function(product) {
-    res.json(product);
+
   });
 });
 
@@ -127,5 +134,11 @@ router.post("/api/product", (req, res) => {
     res.json(dbProduct);
   });
 });
+
+router.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('/');
+  });
 
 module.exports = router;
