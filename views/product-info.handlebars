@@ -13,14 +13,16 @@
                 <h1 class="display-6">Price: </h1>
                 <h1 class="display-5">${{product.dataValues.price}}</h1>
             </div>
-        </div>
-        <h1 class="display-6 col-4">Reviews</h1>
-        <h1 class="display-6 col-8">
-            {{product.dataValues.rating}}
-        </h1>
-        {{#each product.dataValues.Reviews}}
-        {{> review-block}}
-        {{/each}}
-    </div>
+            <h1 class="display-6 col-4">Reviews</h1>
+            <h1 class="display-6 col-8">
+                {{product.dataValues.rating}}
+            </h1>
 
-</div>
+            {{#each product.dataValues.Reviews}}
+            {{> review-block}}
+            {{/each}}
+        </div>
+        <div>
+            <button type="button" class="btn btn-secondary btn-lg btn-block">Add to cart</button>
+        </div>
+    </div>
