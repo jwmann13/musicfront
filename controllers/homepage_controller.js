@@ -24,6 +24,16 @@ router.get("/product", (req, res) => {
   });
 });
 
+// Checkout routing
+router.get("/checkout", (req, res) => {
+  db.Product.findAll({}).then(dbProduct => {
+    // console.log(dbProduct);
+    res.render("checkout", {
+      product: dbProduct
+    });
+  });
+});
+
 // list of products by instrument family
 router.get("/product/instrument/:family", (req, res) => {
   db.Product.findAll({
