@@ -2,21 +2,21 @@
     <div class="row">
         <img class="col-4" src={{product.dataValues.photo}} alt="">
         <div class="col-8">
-            <h1 class="display-1">{{#toUpperCase product.dataValues.name}}{{/toUpperCase}}</h1>
-             <h1 class="display-6">Brand</h1>
+            <h1 class="display-4">{{#toUpperCase product.dataValues.name}}{{/toUpperCase}}</h1>
+            <h1 class="display-6">Brand</h1>
             <div class="lead">{{product.dataValues.brand}}</div>
-             <h1 class="display-6">Model</h1>
+            <h1 class="display-6">Model</h1>
             <div class="lead">{{product.dataValues.model}}</div>
             <h1 class="display-6">Description</h1>
             <div class="lead">{{product.dataValues.description}}</div>
-            <h1 class="display-6">Reviews</h1>
-            <div class="lead">
-                {{product.dataValues.rating}}
-                {{#each product.dataValues.Reviews}}
-                {{> review-block}}
-                {{/each}}
-            </div>
         </div>
+        <h1 class="display-6 col-4">Reviews</h1>
+        <h1 class="display-6 col-8">
+            {{product.dataValues.rating}}
+        </h1>
+        {{#each product.dataValues.Reviews}}
+        {{> review-block}}
+        {{/each}}
     </div>
 
 </div>

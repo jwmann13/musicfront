@@ -14,6 +14,7 @@ router.get("/", function(req, res) {
   });
 });
 
+// list of all products
 router.get("/product", (req, res) => {
   db.Product.findAll({}).then(dbProduct => {
     // console.log(dbProduct);
@@ -23,6 +24,7 @@ router.get("/product", (req, res) => {
   });
 });
 
+// list of products by instrument family
 router.get("/product/instrument/:family", (req, res) => {
   db.Product.findAll({
     where: {
@@ -36,6 +38,7 @@ router.get("/product/instrument/:family", (req, res) => {
   });
 });
 
+// product info page by id
 router.get("/product/info/:id", (req, res) => {
   db.Product.findOne({
     where: {
@@ -50,25 +53,12 @@ router.get("/product/info/:id", (req, res) => {
   });
 });
 
-// Load example page and pass in an example by id
-router.get("/example/:id", function(req, res) {
-  db.Example.findOne({
-    where: {
-      id: req.params.id
-    }
-  }).then(function(dbExample) {
-    res.render("example", {
-      example: dbExample
-    });
-  });
-});
-
 // Render 404 page for any unmatched routes
 router.get("*", function(req, res) {
   res.render("404");
 });
 
-// Products
+// Products API
 
 //Get for all prpoducts
 router.get("/api/products", (req, res) => {
