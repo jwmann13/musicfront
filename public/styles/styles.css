@@ -21,7 +21,7 @@ a.product-link {
   transition: all 0.3s ease-in;
   width: 0;
   overflow: hidden;
-  border: solid 1px gray
+  border: solid 1px gray;
 }
 
 .show-cart {
@@ -32,4 +32,11 @@ a.product-link {
 
 .product-list {
   list-style: none;
+}
+
+.cartItems {
+  color: gray;
+  padding: 4px;
+  opacity: 100%;
+  background-color: whitesmoke
 }
