@@ -1,13 +1,13 @@
 const express = require("express");
-const passport = require("passport")
+const passport = require("passport");
 
 let router = express.Router();
 let db = require("../models");
 
 // HTML ROUTES
 // Load index page
-router.get("/", function (req, res) {
-  db.Product.findAll({}).then(function (dbProduct) {
+router.get("/", function(req, res) {
+  db.Product.findAll({}).then(function(dbProduct) {
     res.render("index", {
       msg: "Welcome!",
       product: dbProduct
@@ -36,10 +36,8 @@ router.get("/checkout", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  res.render("login", {
-
-  })
-})
+  res.render("login", {});
+});
 
 // list of products by instrument family
 router.get("/product/instrument/:family", (req, res) => {
@@ -71,7 +69,7 @@ router.get("/product/info/:id", (req, res) => {
 });
 
 // Render 404 page for any unmatched routes
-router.get("*", function (req, res) {
+router.get("*", function(req, res) {
   res.render("404");
 });
 
@@ -79,7 +77,7 @@ router.get("*", function (req, res) {
 
 //Get for all prpoducts
 router.get("/api/products", (req, res) => {
-  db.Product.findAll({}).then(function (product) {
+  db.Product.findAll({}).then(function(product) {
     res.json(product);
   });
 });
@@ -90,7 +88,7 @@ router.get("/api/products/:product", (req, res) => {
     where: {
       name: req.params.name
     }
-  }).then(function (product) {
+  }).then(function(product) {
     res.json(product);
   });
 });
@@ -101,7 +99,7 @@ router.get("/api/products/category/:category", (req, res) => {
     where: {
       category: req.params.category
     }
-  }).then(function (product) {
+  }).then(function(product) {
     res.json(product);
   });
 });
@@ -112,13 +110,13 @@ router.get("/api/products/instrument/:instrument", (req, res) => {
     where: {
       instrumentFamily: req.params.instrument
     }
-  }).then(function (product) {
-    res.json(product)
+  }).then(function(product) {
+    res.json(product);
   });
 });
 
 router.get("/api/products", (req, res) => {
-  db.Product.findAll({}).then(function (product) {
+  db.Product.findAll({}).then(function(product) {
     res.json(product);
   });
 });
@@ -130,10 +128,12 @@ router.post("/api/product", (req, res) => {
   });
 });
 
-router.post('/login',
-  passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/login'
-  }));
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login"
+  })
+);
 
 module.exports = router;

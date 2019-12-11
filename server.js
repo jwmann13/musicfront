@@ -3,7 +3,7 @@ const express = require("express");
 const exphbrs = require("express-handlebars");
 const path = require("path");
 const dummy = require("./dummy/dummyData");
-const passport = require('passport');
+const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
 const PORT = process.env.PORT || 8080;
@@ -27,16 +27,16 @@ app.engine(
   exphbrs({
     defaultLayout: "main",
     helpers: {
-      ifeq: function (a, b, options) {
+      ifeq: function(a, b, options) {
         if (a === b) {
           return options.fn(this);
         }
         return options.inverse(this);
       },
-      toLowerCase: function (str) {
+      toLowerCase: function(str) {
         return str.toLowerCase();
       },
-      toUpperCase: function (str) {
+      toUpperCase: function(str) {
         return str.toUpperCase();
       }
     }
@@ -48,28 +48,33 @@ let routes = require("./controllers/homepage_controller");
 
 app.use(routes);
 
-app.get('/success', (req, res) => res.send("Welcome " + req.query.username + "!!"));
-app.get('/error', (req, res) => res.send("error logging in"));
+app.get("/success", (req, res) =>
+  res.send("Welcome " + req.query.username + "!!")
+);
+app.get("/error", (req, res) => res.send("error logging in"));
 
-passport.use(new LocalStrategy(
-  function (username, password, done) {
-    db.Customer.findOne({
-      userName: username
-    }, function (err, user) {
-      console.log(user)
-      if (err) {
-        return done(err);
+passport.use(
+  new LocalStrategy(function(username, password, done) {
+    db.Customer.findOne(
+      {
+        userName: username
+      },
+      function(err, user) {
+        console.log(user);
+        if (err) {
+          return done(err);
+        }
+        if (!user) {
+          return done(null, false);
+        }
+        if (user.userPassword !== password) {
+          return done(null, false);
+        }
+        return done(null, user);
       }
-      if (!user) {
-        return done(null, false);
-      }
-      if (user.userPassword != password) {
-        return done(null, false);
-      }
-      return done(null, user);
-    });
-  }
-));
+    );
+  })
+);
 
 db.sequelize
   .sync({
@@ -84,12 +89,12 @@ db.sequelize
     });
   });
 
-passport.serializeUser(function (user, cb) {
+passport.serializeUser(function(user, cb) {
   cb(null, user.id);
 });
 
-passport.deserializeUser(function (id, cb) {
-  User.findById(id, function (err, user) {
+passport.deserializeUser(function(id, cb) {
+  User.findById(id, function(err, user) {
     cb(err, user);
   });
 });
