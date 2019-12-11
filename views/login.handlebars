@@ -1,4 +1,7 @@
 <div class="container">
+    {{#if messages.error}}
+    {{messages.error}}
+    {{/if}}
     <div class="row">
         <div class="col-3"></div>
 
@@ -7,10 +10,12 @@
             <!-- Login Form -->
             <form action="/login" method="POST" id="loginForm">
                 <div class="form-group">
-                    <input type="text" id="login" class="" name="login" placeholder="login">
+                    <label for="login">Username</label>
+                    <input type="text" id="login" class="" name="login" placeholder="login" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="password" class="" name="login" placeholder="password">
+                    <label for="password">Password</label>
+                    <input type="text" id="password" class="" name="password" placeholder="password" required>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Log In">
@@ -21,6 +26,9 @@
             <div id="formFooter">
                 <a class="underlineHover" href="#">Forgot Password?</a>
             </div>
+            <div>
+                <a href="/register">Not a member? Register a new account!</a>
+            </div>
 
         </div>
 
@@ -28,5 +36,3 @@
 
     </div>
 </div>
-
-{{!-- <script src="/js/login.js"></script> --}}
