@@ -67,8 +67,8 @@
       <div id="cartInfo" class="cart">
         <button class="btn" id="closeCart"><i class="fa fa-window-close"></i></button>
         <ul class="product-list">
-          <li>Product 1</li><i class="fa fa-trash"></i>
-          <li>Product 2</li><i class="fa fa-trash"></i>
+          <li>Product 1</li><i class="fa fa-trash "></i>
+          <li>Product 2</li><i class="fa fa-trash deleteProduct"></i>
         </ul>
       </div>
     </div>
@@ -82,15 +82,25 @@
   const cartInfo = document.getElementById("cartInfo")
   const cartButton = document.getElementById("cartButton")
   const closeButton = document.getElementById("closeCart")
+ 
   
   $(cartButton).on("click", function() {
     cartInfo.classList.toggle("show-cart")
   })
 
   $(closeButton).on("click", function() {
-    cartInfo.classList.toggle("cart")
+    cartInfo.style.display("none")
   })
   
+  function deleteItem () {
+    const deleteItem = document.getElementsByClassName("deleteProduct")
+    deleteItem.on("click", function () {
+      alert("Item deleted")
+    })
+  }
+
+  deleteItem()
+ 
   
   </script>
 </body>
