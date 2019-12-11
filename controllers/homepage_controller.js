@@ -110,11 +110,11 @@ router.get("/api/products/instrument/:instrument", (req, res) => {
   });
 });
 
-//Get products by color
-router.get("/api/products/color/:color", (req, res) => {
+//Get products by brand
+router.get("/api/products/brand/:brand", (req, res) => {
   db.Product.findAll({
     where: {
-      color: req.params.color
+      color: req.params.brand
     }
   }).then(function(product) {
     res.json(product);
