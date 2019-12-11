@@ -115,8 +115,13 @@ router.get("/api/products/instrument/:instrument", (req, res) => {
   });
 });
 
-router.get("/api/products", (req, res) => {
-  db.Product.findAll({}).then(function(product) {
+//Get products by brand
+router.get("/api/products/brand/:brand", (req, res) => {
+  db.Product.findAll({
+    where: {
+      color: req.params.brand
+    }
+  }).then(function(product) {
     res.json(product);
   });
 });

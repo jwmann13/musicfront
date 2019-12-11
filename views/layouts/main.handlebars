@@ -17,6 +17,8 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
 
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
   <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
 
   <title>Home Page</title>
@@ -59,12 +61,38 @@
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search mr-2"></i>Search</button>
       </form>
+      <button class="btn btn-outline-secondary mx-3" id="cartButton"><i class="fa fa-shopping-cart mr-2"></i>Shopping Cart</button>
+      <div id="cartInfo" class="cart">
+        <button class="btn" id="closeCart"><i class="fa fa-window-close"></i></button>
+        <ul class="product-list">
+          <li>Product 1</li><i class="fa fa-trash"></i>
+          <li>Product 2</li><i class="fa fa-trash"></i>
+        </ul>
+      </div>
     </div>
   </nav>
   {{{body}}}
   <script src="/js/links.js"></script>
+
+
+  <script>
+  
+  const cartInfo = document.getElementById("cartInfo")
+  const cartButton = document.getElementById("cartButton")
+  const closeButton = document.getElementById("closeCart")
+  
+  $(cartButton).on("click", function() {
+    cartInfo.classList.toggle("show-cart")
+  })
+
+  $(closeButton).on("click", function() {
+    cartInfo.classList.toggle("cart")
+  })
+  
+  
+  </script>
 </body>
 
 </html>
