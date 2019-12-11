@@ -98,8 +98,7 @@ var handleDeleteBtnClick = function() {
 $submitBtn.on("click", handleFormSubmit);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
 
-
 //Shopping cart button click event
-$("#shoppingCart").on("click", function () {
-  alert("Shoppping cart has been clicked")
-})
+$("#shoppingCart").on("click", function() {
+  alert("Shoppping cart has been clicked");
+});
