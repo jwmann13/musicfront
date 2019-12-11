@@ -11,3 +11,25 @@ a.product-link {
   background: #ffffff;
 
 }
+
+.cart {
+  position: absolute;
+  min-height: 10rem;
+  background-color: whitesmoke;
+  top: 0;
+  right: 0;
+  transition: all 0.3s ease-in;
+  width: 0;
+  overflow: hidden;
+  border: solid 1px gray
+}
+
+.show-cart {
+  width: 18rem;
+  padding: 2rem 1.5rem;
+  transform: rotateY(-360deg)
+}
+
+.product-list {
+  list-style: none;
+}
