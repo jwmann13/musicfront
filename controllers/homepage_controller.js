@@ -26,7 +26,7 @@ router.get("/product", (req, res) => {
 });
 
 // Checkout routing
-router.get("/checkout", (req, res) => {
+router.get("/checkout/:id", (req, res) => {
   db.Product.findAll({}).then(dbProduct => {
     // console.log(dbProduct);
     res.render("checkout", {
