@@ -3,41 +3,41 @@ let db = require("../models");
 
 // list of all products
 router.get("/", (req, res) => {
-    db.Product.findAll({}).then(dbProduct => {
-        // console.log(dbProduct);
-        res.render("product", {
-            product: dbProduct
-        });
+  db.Product.findAll({}).then(dbProduct => {
+    // console.log(dbProduct);
+    res.render("product", {
+      product: dbProduct
     });
+  });
 });
 
 // list of products by instrument family
 router.get("/instrument/:family", (req, res) => {
-    db.Product.findAll({
-        where: {
-            instrumentFamily: req.params.family
-        }
-    }).then(dbProduct => {
-        // console.log(dbProduct);
-        res.render("product", {
-            product: dbProduct
-        });
+  db.Product.findAll({
+    where: {
+      instrumentFamily: req.params.family
+    }
+  }).then(dbProduct => {
+    // console.log(dbProduct);
+    res.render("product", {
+      product: dbProduct
     });
+  });
 });
 
 // product info page by id
 router.get("/info/:id", (req, res) => {
-    db.Product.findOne({
-        where: {
-            id: req.params.id
-        },
-        include: [db.Review]
-    }).then(dbProduct => {
-        // console.log(dbProduct);
-        res.render("product-info", {
-            product: dbProduct
-        });
+  db.Product.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [db.Review]
+  }).then(dbProduct => {
+    // console.log(dbProduct);
+    res.render("product-info", {
+      product: dbProduct
     });
+  });
 });
 
 module.exports = router;

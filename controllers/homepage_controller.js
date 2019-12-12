@@ -5,8 +5,8 @@ let db = require("../models");
 
 // HTML ROUTES
 // Load index page
-router.get("/", function (req, res) {
-  db.Product.findAll({}).then(function (dbProduct) {
+router.get("/", function(req, res) {
+  db.Product.findAll({}).then(function(dbProduct) {
     res.render("index", {
       msg: "Welcome!",
       product: dbProduct
@@ -34,9 +34,8 @@ router.get("/dashboard", (req, res) => {
   });
 });
 
-
 // Render 404 page for any unmatched routes
-router.get("*", function (req, res) {
+router.get("*", function(req, res) {
   res.render("404");
 });
 

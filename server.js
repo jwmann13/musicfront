@@ -1,5 +1,5 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config()
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
 }
 
 // Node packages
@@ -28,28 +28,28 @@ app.engine(
   exphbrs({
     defaultLayout: "main",
     helpers: {
-      ifeq: function (a, b, options) {
+      ifeq: function(a, b, options) {
         if (a === b) {
           return options.fn(this);
         }
         return options.inverse(this);
       },
-      ifnotundef: function (a, options) {
-        if (typeof a !== 'undefined') {
+      ifnotundef: function(a, options) {
+        if (typeof a !== "undefined") {
           return options.fn(this);
         }
         return options.inverse(this);
       },
-      ifnotemptystr: function (a, options) {
-        if (a !== '' || a !== undefined) {
+      ifnotemptystr: function(a, options) {
+        if (a !== "" || a !== undefined) {
           return options.fn(this);
         }
         return options.inverse(this);
       },
-      toLowerCase: function (str) {
+      toLowerCase: function(str) {
         return str.toLowerCase();
       },
-      toUpperCase: function (str) {
+      toUpperCase: function(str) {
         return str.toUpperCase();
       }
     }
@@ -68,11 +68,13 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // express session
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false
-}));
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
+  })
+);
 
 // passport middleware
 app.use(passport.initialize());
@@ -82,24 +84,23 @@ app.use(passport.session());
 app.use(flash());
 
 // Global variables
-app.use(function (req, res, next) {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
+app.use(function(req, res, next) {
+  res.locals.successMsg = req.flash("successMsg");
+  res.locals.errorMsg = req.flash("errorMsg");
+  res.locals.error = req.flash("error");
   next();
 });
 
 // ROUTES
 let users = require("./controllers/users");
-let products = require("./controllers/products")
+let products = require("./controllers/products");
 let api = require("./controllers/api");
-let homepage = require("./controllers/homepage_controller")
+let homepage = require("./controllers/homepage_controller");
 
 app.use("/users", users);
 app.use("/products", products);
 app.use("/api", api);
-app.use("/", homepage)
-
+app.use("/", homepage);
 
 // DB SYNC AND START SERVER
 db.sequelize
