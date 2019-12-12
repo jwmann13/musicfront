@@ -64,43 +64,48 @@
         <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-lg fa-search mr-2"></i>Search</button>
       </form>
       
-      <div class="cartBtn d-inline-flex">
-        <button class="btn btn-outline-secondary ml-3 d-inline" id="cartButton">
+      <div class="cart-btn">
+        <span class="nav-icon">
+          <button class="btn btn-outline-secondary ml-1">
           <i class="fa fa-lg fa-cart-plus mr-2"></i>
           Shopping Cart
-          <div class="cartItems d-inline border border-secondary rounded ml-2">0</div>
+        </span>
+        <div class="cart-items d-inline border border-secondary rounded ml-2">0</div>
         </button>
       </div>
       
-      <div id="cartInfo" class="cart">
+      <div class="cart-overlay">
+        <div class="cart">
+            <span class="close-cart">
+             <i class="fa fa-window-close"></i>
+            </span>
+            <h3>Your Cart</h3>
+          
+        
+          <div class="cart-content">
+            <div class="cart-item">
+              <img src="#" alt="placeholder">
+              
+              <div>
+                <h5>Product 1</h5>
+                <p>Price: </p>
+                <span class="remove-item">Remove <i class="fa fa-sm fa-trash "></i></span>
+              </div> 
 
-          <div class="header d-inline-flex mb-5">
-            <button class="btn" id="closeCart"><i class="fa fa-window-close"></i></button>
-            <h3 class="text-center">Your Cart</h3>
+              <div>
+                <i class="fa fa-chevron-up"></i>
+                <p class="item-amount">1</p>
+                <i class="fa fa-chevron-down"></i>
+              </div>
+            </div>
           </div>
           
-          <div class="productInfo mb-5">
-            <img src="#" alt="placeholder">
-            <h5>Product 1</h5>
-            <p>Price: </p>
-            <button class="btn removeProduct"><i class="fa fa-sm fa-trash "></i></button>
-          </div>
-          
-          <div class="productInfo mt-5">
-            <img src="#" alt="placeholder">
-            <h5>Product 1</h5>
-            <p>Price: </p>
-            <button class="btn removeProduct"><i class="fa fa-sm fa-trash "></i></button>
-          </div>
 
-        <div id="total" class="mt-5">
-          <h3>Your Total: 
-            <div id="totalPrice"></div>
-          </h3>
+        <div class="cart-footer">
+          <h3>Your Total: $<span class="cart-total"></span>0</h3>
+          <button class="btn btn-outline-secondary checkout">Checkout</button>
+          <button class="btn btn-outline-secondary clear-cart">Clear Cart</button>
         </div>
-
-        <button class="btn btn-outline-secondary" id="checkout">Checkout</button>
-        <button class="btn btn-outline-secondary" id="clear">Clear Cart</button>
 
       </div>
     </div>
@@ -114,24 +119,7 @@
   const cartInfo = document.getElementById("cartInfo")
   const cartButton = document.getElementById("cartButton")
   const closeButton = document.getElementById("closeCart")
- 
-  
-  $(cartButton).on("click", function() {
-    cartInfo.classList.toggle("show-cart")
-  })
 
-  $(closeButton).on("click", function() {
-    cartInfo.style.display("none")
-  })
-  
-  function deleteItem () {
-    const deleteItem = document.getElementsByClassName("deleteProduct")
-    deleteItem.on("click", function () {
-      alert("Item deleted")
-    })
-  }
-
-  deleteItem()
  
   
   </script>
