@@ -4,13 +4,20 @@
 
         <div class="card col-6">
             <h1 class="display-4">Login</h1>
+
+            {{#each errors}}
+            {{> error}}
+            {{/each}}
+
             <!-- Login Form -->
-            <form action="/login" method="POST" id="loginForm">
+            <form action="/users/login" method="POST" id="loginForm">
                 <div class="form-group">
-                    <input type="text" id="login" class="" name="login" placeholder="login">
+                    <label for="login">Username</label>
+                    <input type="text" id="login" class="" name="login" placeholder="login" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" id="password" class="" name="login" placeholder="password">
+                    <label for="password">Password</label>
+                    <input type="text" id="password" class="" name="password" placeholder="password" required>
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btn btn-primary" value="Log In">
@@ -21,6 +28,9 @@
             <div id="formFooter">
                 <a class="underlineHover" href="#">Forgot Password?</a>
             </div>
+            <div>
+                <a href="/users/register">Not a member? Register a new account!</a>
+            </div>
 
         </div>
 
@@ -28,5 +38,3 @@
 
     </div>
 </div>
-
-{{!-- <script src="/js/login.js"></script> --}}
