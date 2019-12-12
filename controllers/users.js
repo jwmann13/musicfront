@@ -1,47 +1,109 @@
 let router = require("express").Router();
 let db = require("../models");
-const passport = require("passport")
+const passport = require("passport");
+const bcrypt = require("bcrypt")
 
-const { forwardAuthenticated } = require("../config/auth")
+const {
+    forwardAuthenticated
+} = require("../config/auth")
+
 
 // LOGIN
-
 router.get("/login", forwardAuthenticated, (req, res) => {
-    res.render("login");
+    res.render("login", { errors: req.flash('error'), successes: req.flash() });
 });
 
 router.post("/login", (req, res, next) => {
-        passport.authenticate("local", {
-            successRedirect: "/",
-            failureRedirect: "/login",
-            failureFlash: true
-        })(req, res, next)
-    },
-    (req, res) => {
-        res.redirect("/users/" + req.user.username)
-    }
-);
+    passport.authenticate("local", {
+        successRedirect: "/",
+        failureRedirect: "/users/login",
+        failureFlash: true
+    })(req, res, next)
+});
 
 router.get("/register", forwardAuthenticated, (req, res) => {
     res.render("register")
 })
 
 router.post("/register", async (req, res) => {
-    try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const {
+        username,
+        password,
+        firstName,
+        lastName,
+        address,
+        email
+    } = req.body;
+    let errors = [];
 
-        db.Customer.create({
-            username: req.body.username,
-            password: hashedPassword,
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-        }).then(dbCustomer => {
-            // console.log(dbCustomer)
-            res.redirect("/login")
-        })
-    } catch {
-        res.redirect("/register")
+    if (!username || !password || !firstName || !lastName || !address || !email) {
+        errors.push({
+            msg: 'Please enter all fields'
+        });
+    }
+
+    if (password.length < 6) {
+        errors.push({
+            msg: 'Password must be at least 6 characters'
+        });
+    }
+
+    if (errors.length > 0) {
+        res.render('register', {
+            errors,
+            username,
+            password,
+            firstName,
+            lastName,
+            address,
+            email
+        });
+    } else {
+        db.Customer.findOne({
+            where: {
+                email: email
+            }
+        }).then(user => {
+            if (user) {
+                errors.push({
+                    msg: 'Email already exists'
+                });
+                res.render('register', {
+                    errors,
+                    username,
+                    password,
+                    firstName,
+                    lastName,
+                    address,
+                    email
+                });
+            } else {
+                let newUser = {
+                    username,
+                    password,
+                    firstName,
+                    lastName,
+                    address,
+                    email
+                }
+
+                bcrypt.genSalt(10, (err, salt) => {
+                    bcrypt.hash(newUser.password, salt, (err, hash) => {
+                        if (err) throw err;
+                        newUser.password = hash;
+                        db.Customer.create(newUser)
+                            .then(user => {
+                                req.flash(
+                                    'success_msg',
+                                    'You are now registered and can log in'
+                                );
+                                res.redirect('/users/login');
+                            })
+                            .catch(err => console.log(err));
+                    });
+                });
+            }
+        });
     }
 })
 

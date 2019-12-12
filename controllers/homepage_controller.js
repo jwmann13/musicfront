@@ -24,6 +24,16 @@ router.get("/checkout", (req, res) => {
   });
 });
 
+// dashboard routing
+router.get("/dashboard", (req, res) => {
+  db.Product.findAll({}).then(dbProduct => {
+    // console.log(dbProduct);
+    res.render("dashboard", {
+      product: dbProduct
+    });
+  });
+});
+
 
 // Render 404 page for any unmatched routes
 router.get("*", function (req, res) {

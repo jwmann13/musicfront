@@ -6,13 +6,14 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require("express");
 const exphbrs = require("express-handlebars");
 const path = require("path");
-
-const dummy = require("./dummy/dummyData");
-
 const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
 
+// Dummy data
+const dummy = require("./dummy/dummyData");
+
+// Passport config
 require("./config/passport-config")(passport);
 
 const PORT = process.env.PORT || 8080;
@@ -33,6 +34,18 @@ app.engine(
         }
         return options.inverse(this);
       },
+      ifnotundef: function (a, options) {
+        if (typeof a !== 'undefined') {
+          return options.fn(this);
+        }
+        return options.inverse(this);
+      },
+      ifnotemptystr: function (a, options) {
+        if (a !== '' || a !== undefined) {
+          return options.fn(this);
+        }
+        return options.inverse(this);
+      },
       toLowerCase: function (str) {
         return str.toLowerCase();
       },
@@ -43,13 +56,15 @@ app.engine(
   })
 );
 
-// 
+// bpdy parsing
 app.use(
   express.urlencoded({
     extended: false
   })
 );
 app.use(express.json());
+
+// public files
 app.use(express.static(path.join(__dirname, "public")));
 
 // express session
@@ -65,7 +80,6 @@ app.use(passport.session());
 
 // connect flash
 app.use(flash());
-// app.use(methodOverride('_method'))
 
 // Global variables
 app.use(function (req, res, next) {
@@ -86,6 +100,8 @@ app.use("/products", products);
 app.use("/api", api);
 app.use("/", homepage)
 
+
+// DB SYNC AND START SERVER
 db.sequelize
   .sync({
     force: true

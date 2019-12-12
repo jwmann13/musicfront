@@ -9,7 +9,7 @@
 
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
-    
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
   </script>
@@ -17,7 +17,8 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
 
-  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   <link rel="stylesheet" href="/styles/styles.css" media="screen" title="no title" charset="utf-8">
 
@@ -25,6 +26,7 @@
 </head>
 
 <body>
+  {{!-- NAVBAR --}}
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="/">MusicFront</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -32,20 +34,21 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    {{!-- LINKS --}}
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="/product/instrument/electric%20guitar">Electric Guitars<span
+          <a class="nav-link" href="/products/instrument/electric%20guitar">Electric Guitars<span
               class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/product/instrument/acoustic%20guitar">Acoustic Guitars</a>
+          <a class="nav-link" href="/products/instrument/acoustic%20guitar">Acoustic Guitars</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/product/instrument/bass%20guitar">Bass Guitars</a>
+          <a class="nav-link" href="/products/instrument/bass%20guitar">Bass Guitars</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/product/instrument/synthesizer">Synthesizers</a>
+          <a class="nav-link" href="/products/instrument/synthesizer">Synthesizers</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -53,17 +56,23 @@
             More...
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item nav-link" href="/product/instrument/string%20instrument">Strings</a>
-            <a class="dropdown-item nav-link" href="/product/instrument/woodwind">Woodwinds</a>
-            <a class="dropdown-item nav-link" href="/product/instrument/brass">Brass</a>
+            <a class="dropdown-item nav-link" href="/products/instrument/string%20instrument">Strings</a>
+            <a class="dropdown-item nav-link" href="/products/instrument/woodwind">Woodwinds</a>
+            <a class="dropdown-item nav-link" href="/products/instrument/brass">Brass</a>
           </div>
         </li>
       </ul>
+
+      {{!-- SEARCH BAR --}}
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search mr-2"></i>Search</button>
+        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i
+            class="fa fa-search mr-2"></i>Search</button>
       </form>
-      <button class="btn btn-outline-secondary mx-3" id="cartButton"><i class="fa fa-shopping-cart mr-2"></i>Shopping Cart</button>
+
+      {{!-- SHOPPING CART DROPDOWN --}}
+      <button class="btn btn-outline-secondary mx-3" id="cartButton"><i class="fa fa-shopping-cart mr-2"></i>Shopping
+        Cart</button>
       <div id="cartInfo" class="cart">
         <button class="btn" id="closeCart"><i class="fa fa-window-close"></i></button>
         <ul class="product-list">
@@ -71,6 +80,13 @@
           <li>Product 2</li><i class="fa fa-trash"></i>
         </ul>
       </div>
+
+      {{!-- LOGIN NAV BUTTON --}}
+      <a href="/users/login" class="">
+        <button class="btn btn-outline-secondary mx-lg-0">
+          Log In
+        </button>
+      </a>
     </div>
   </nav>
   {{{body}}}
@@ -78,20 +94,17 @@
 
 
   <script>
-  
-  const cartInfo = document.getElementById("cartInfo")
-  const cartButton = document.getElementById("cartButton")
-  const closeButton = document.getElementById("closeCart")
-  
-  $(cartButton).on("click", function() {
-    cartInfo.classList.toggle("show-cart")
-  })
+    const cartInfo = document.getElementById("cartInfo")
+    const cartButton = document.getElementById("cartButton")
+    const closeButton = document.getElementById("closeCart")
 
-  $(closeButton).on("click", function() {
-    cartInfo.classList.toggle("cart")
-  })
-  
-  
+    $(cartButton).on("click", function () {
+      cartInfo.classList.toggle("show-cart")
+    })
+
+    $(closeButton).on("click", function () {
+      cartInfo.classList.toggle("cart")
+    })
   </script>
 </body>
 
