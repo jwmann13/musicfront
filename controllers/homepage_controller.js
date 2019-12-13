@@ -14,7 +14,7 @@ router.get("/", function(req, res) {
         msg: `Welcome ${req.user.dataValues.firstName}`,
         user: req.user,
         product: dbProduct
-      })
+      });
     } else {
       res.render("index", {
         msg: "Welcome!",
@@ -26,20 +26,17 @@ router.get("/", function(req, res) {
 
 // Checkout routing
 router.get("/checkout", (req, res) => {
-  db.Product.findAll({}).then(dbProduct => {
-    // console.log(dbProduct);
-    db.Product.findAll({}).then(function(dbProduct) {
-      if (req.user) {
-        res.render("checkout", {
-          user: req.user,
-          product: dbProduct
-        })
-      } else {
-        res.render("checkout", {
-          product: dbProduct
-        });
-      }
-    });
+  db.Product.findAll({}).then(function(dbProduct) {
+    if (req.user) {
+      res.render("checkout", {
+        user: req.user,
+        product: dbProduct
+      });
+    } else {
+      res.render("checkout", {
+        product: dbProduct
+      });
+    }
   });
 });
 

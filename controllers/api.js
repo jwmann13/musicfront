@@ -1,6 +1,6 @@
 let router = require("express").Router();
 let db = require("../models");
-let { customerCartAuthenticate } = require("../config/auth")
+let { customerCartAuthenticate } = require("../config/auth");
 
 // Products API
 
@@ -18,7 +18,7 @@ router.get("/products/:id", customerCartAuthenticate, (req, res) => {
       id: req.params.id
     }
   }).then(product => {
-    res.json(product)
+    res.json(product);
   });
 });
 

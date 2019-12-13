@@ -12,10 +12,10 @@ module.exports = {
     }
     res.redirect("/dashboard");
   },
-  customerCartAuthenticate: function (req, res, next) {
+  customerCartAuthenticate: function(req, res, next) {
     if (req.isAuthenticated()) {
       return next();
     }
-    res.json({})
+    res.json({});
   }
 };

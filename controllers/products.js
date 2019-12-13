@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
       res.render("product", {
         user: req.user,
         product: dbProduct
-      })
+      });
     } else {
       res.render("product", {
         product: dbProduct
@@ -30,7 +30,7 @@ router.get("/instrument/:family", (req, res) => {
       res.render("product", {
         user: req.user,
         product: dbProduct
-      })
+      });
     } else {
       res.render("product", {
         product: dbProduct
@@ -52,7 +52,7 @@ router.get("/info/:id", (req, res) => {
       res.render("product-info", {
         user: req.user,
         product: dbProduct
-      })
+      });
     } else {
       res.render("product-info", {
         product: dbProduct
