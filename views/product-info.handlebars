@@ -12,7 +12,7 @@
             <h1 class="display-6">Price: </h1>
             <div class="display-5">${{product.dataValues.price}}</div>
         </div>
-        <h1 class="display-6 col-4">Reviews</h1>
+        <h1 class="display-6 col-4">Reviews:</h1>
         <h1 class="display-6 col-8">
             {{product.dataValues.rating}}
         </h1>
@@ -21,10 +21,10 @@
         {{/each}}
     </div>
 
-    <div>
-        <button type="button" class="btn btn-secondary btn-lg btn-block" href="/checkout/{{dataValues.id}}"
-            class="product-link" id="add-button" data-id={{product.dataValues.id}}>Add to cart</button>
-    </div>
+    <button type="button" class="btn btn-secondary btn-lg btn-block" class="product-link" id="add-button"
+        data-id={{product.dataValues.id}}>
+        Add to cart
+    </button>
 
 </div>
 

@@ -63,21 +63,12 @@
         </li>
       </ul>
 
-      {{!-- SEARCH BAR --}}
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">
-          <i class="fa fa-lg fa-search mr-2"></i>
-          Search
-        </button>
-      </form>
-      
       {{!-- SHOPPING CART --}}
       <div class="cart-btn">
         <span class="nav-icon">
           <button class="btn btn-outline-secondary ml-1 cart-button">
-          <i class="fa fa-lg fa-cart-plus mr-2"></i>
-          Shopping Cart
+            <i class="fa fa-lg fa-cart-plus mr-2"></i>
+            Shopping Cart
         </span>
         <div class="cart-items d-inline rounded ml-2">0</div>
         </button>
@@ -85,16 +76,18 @@
 
       <div class="cart-overlay">
         <div class="cart">
-            <span class="close-cart">
-             <i class="fa fa-window-close"></i>
-            </span>
-            <h3 class="text-center">Your Cart</h3>
-          
-        
+          <span class="close-cart">
+            <i class="fa fa-window-close"></i>
+          </span>
+          <h3 class="text-center">Your Cart</h3>
+
+
           <div class="cart-content">
             <div class="cart-item">
-              <img src="https://c1.zzounds.com/media/productmedia/fit,2018by3200/quality,85/1_Full_Straight_Front_NA-7bfb82eb45ab99fc16cc1aadd2318c77.jpg" alt="placeholder">
-              
+              <img
+                src="https://c1.zzounds.com/media/productmedia/fit,2018by3200/quality,85/1_Full_Straight_Front_NA-7bfb82eb45ab99fc16cc1aadd2318c77.jpg"
+                alt="placeholder">
+
               <div>
                 <h5>Electric Guitar</h5>
                 <p>Price: $200.00 </p>
@@ -109,25 +102,36 @@
             </div>
           </div>
 
-        <div class="cart-footer">
-          <h3>Your Total: $<span class="cart-total"></span>0</h3>
-          <a href="/checkout"><button class="btn btn-outline-secondary checkout">Checkout</button></a>
-          <button  class="btn btn-outline-secondary clear-cart">Clear Cart</button>
+          <div class="cart-footer">
+            <h3>Your Total: $<span class="cart-total"></span>0</h3>
+            <a href="/checkout"><button class="btn btn-outline-secondary checkout">Checkout</button></a>
+            <button class="btn btn-outline-secondary clear-cart">Clear Cart</button>
+          </div>
         </div>
       </div>
-    </div>
-    
-    {{!-- LOGIN NAV BUTTON --}}
-      <a href="/users/login" class="">
-        <button class="btn btn-outline-secondary mx-lg-0">
+
+      {{!-- LOGIN NAV BUTTON --}}
+      {{#unless user}}
+      <div class="btn-group mx-0 ml-md-2" role="group">
+        <a href="/users/login" class="btn btn-outline-secondary" role="button">
           Log In
-        </button>
+        </a>
+        <a href="/users/register" class="btn btn-outline-secondary" role="button">
+          Sign Up
+        </a>
+      </div>
+      {{/unless}}
+
+      {{#if user}}
+      <a href="/dashboard" class="btn btn-outline-secondary mx-0 ml-md-2" role="button">
+        Dashboard
       </a>
+      {{/if}}
   </nav>
   {{{body}}}
-  
-<script src="/js/mainJS.js"></script>
-<script src="/js/links.js"></script>
+
+  <script src="/js/mainJS.js"></script>
+  <script src="/js/links.js"></script>
 
 </body>
 
