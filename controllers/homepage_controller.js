@@ -3,7 +3,7 @@ const express = require("express");
 let router = express.Router();
 let db = require("../models");
 
-const { ensureAuthenticated } = require("../config/auth")
+const { ensureAuthenticated } = require("../config/auth");
 
 // HTML ROUTES
 // Load index page
@@ -28,9 +28,7 @@ router.get("/checkout", (req, res) => {
 
 // dashboard routing
 router.get("/dashboard", ensureAuthenticated, (req, res) => {
-  db.Customer.findOne({
-
-  }).then(dbCustomer => {
+  db.Customer.findOne({}).then(() => {
     // console.log(dbProduct);
     res.render("index");
   });

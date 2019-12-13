@@ -3,9 +3,7 @@ let db = require("../models");
 const passport = require("passport");
 const bcrypt = require("bcrypt");
 
-const {
-  forwardAuthenticated
-} = require("../config/auth");
+const { forwardAuthenticated } = require("../config/auth");
 
 // LOGIN
 // GETS
@@ -18,9 +16,9 @@ router.get("/register", forwardAuthenticated, (req, res) => {
 });
 
 router.post("/login", (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/users/login',
+  passport.authenticate("local", {
+    successRedirect: "/dashboard",
+    failureRedirect: "/users/login",
     failureFlash: true
   })(req, res, next);
 });
