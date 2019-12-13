@@ -28,7 +28,9 @@ router.get("/checkout", (req, res) => {
 
 // dashboard routing
 router.get("/dashboard", ensureAuthenticated, (req, res) => {
-  db.Product.findAll({}).then(dbProduct => {
+  db.Customer.findOne({
+
+  }).then(dbCustomer => {
     // console.log(dbProduct);
     res.render("index");
   });

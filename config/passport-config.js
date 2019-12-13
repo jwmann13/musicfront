@@ -9,7 +9,7 @@ function initialize(passport, customer) {
         username: username
       }
     }).then(async user => {
-      console.log("PASSPORT", user);
+      // console.log("PASSPORT", user);
       if (user.dataValues === null) {
         return done(null, false, {
           message: "no user with that name"
