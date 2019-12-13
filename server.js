@@ -1,27 +1,28 @@
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 // Node packages
 const express = require("express");
 const exphbrs = require("express-handlebars");
 const path = require("path");
-const dummy = require("./dummy/dummyData");
 const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
+const flash = require("express-flash");
+const session = require("express-session");
+
+// Dummy data
+const dummy = require("./dummy/dummyData");
+
+// Passport config
+require("./config/passport-config")(passport);
 
 const PORT = process.env.PORT || 8080;
 
 let app = express();
 let db = require("./models");
 
-app.use(passport.initialize());
-app.use(passport.session());
-
-app.use(
-  express.urlencoded({
-    extended: true
-  })
-);
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "public")));
-
+// handlebars setup
+app.set("view engine", "handlebars");
 app.engine(
   "handlebars",
   exphbrs({
@@ -29,6 +30,18 @@ app.engine(
     helpers: {
       ifeq: function(a, b, options) {
         if (a === b) {
+          return options.fn(this);
+        }
+        return options.inverse(this);
+      },
+      ifnotundef: function(a, options) {
+        if (typeof a !== "undefined") {
+          return options.fn(this);
+        }
+        return options.inverse(this);
+      },
+      ifnotemptystr: function(a, options) {
+        if (a !== "" || a !== undefined) {
           return options.fn(this);
         }
         return options.inverse(this);
@@ -42,40 +55,54 @@ app.engine(
     }
   })
 );
-app.set("view engine", "handlebars");
 
-let routes = require("./controllers/homepage_controller");
-
-app.use(routes);
-
-app.get("/success", (req, res) =>
-  res.send("Welcome " + req.query.username + "!!")
+// bpdy parsing
+app.use(
+  express.urlencoded({
+    extended: false
+  })
 );
-app.get("/error", (req, res) => res.send("error logging in"));
+app.use(express.json());
 
-passport.use(
-  new LocalStrategy(function(username, password, done) {
-    db.Customer.findOne(
-      {
-        userName: username
-      },
-      function(err, user) {
-        console.log(user);
-        if (err) {
-          return done(err);
-        }
-        if (!user) {
-          return done(null, false);
-        }
-        if (user.userPassword !== password) {
-          return done(null, false);
-        }
-        return done(null, user);
-      }
-    );
+// public files
+app.use(express.static(path.join(__dirname, "public")));
+
+// express session
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false
   })
 );
 
+// passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// connect flash
+app.use(flash());
+
+// Global variables
+app.use(function(req, res, next) {
+  res.locals.successMsg = req.flash("successMsg");
+  res.locals.errorMsg = req.flash("errorMsg");
+  res.locals.error = req.flash("error");
+  next();
+});
+
+// ROUTES
+let users = require("./controllers/users");
+let products = require("./controllers/products");
+let api = require("./controllers/api");
+let homepage = require("./controllers/homepage_controller");
+
+app.use("/users", users);
+app.use("/products", products);
+app.use("/api", api);
+app.use("/", homepage);
+
+// DB SYNC AND START SERVER
 db.sequelize
   .sync({
     force: true
@@ -88,13 +115,3 @@ db.sequelize
       console.log("App listening on Port: " + PORT);
     });
   });
-
-passport.serializeUser(function(user, cb) {
-  cb(null, user.id);
-});
-
-passport.deserializeUser(function(id, cb) {
-  User.findById(id, function(err, user) {
-    cb(err, user);
-  });
-});
