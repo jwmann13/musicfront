@@ -105,7 +105,7 @@ const dummy = require("./dummy/dummyData");
 // DB SYNC AND START SERVER
 db.sequelize
   .sync({
-    force: false
+    force: true
   })
   .then(() => {
     db.Product.bulkCreate(dummy.products);
