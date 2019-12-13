@@ -102,3 +102,11 @@ a.product-link {
   text-transform: capitalize;
   margin-bottom: 1rem;
 }
+
+.cart-items {
+  font-weight: bold;
+  color: black;
+  border: solid 2px;
+  border-color: black;
+  padding: 2px
+}
