@@ -6,22 +6,24 @@ const bcrypt = require("bcrypt");
 const { forwardAuthenticated } = require("../config/auth");
 
 // LOGIN
+// GETS
 router.get("/login", forwardAuthenticated, (req, res) => {
-  res.render("login", { errors: req.flash("error"), successes: req.flash() });
-});
-
-router.post("/login", (req, res, next) => {
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/users/login",
-    failureFlash: true
-  })(req, res, next);
+  res.render("login");
 });
 
 router.get("/register", forwardAuthenticated, (req, res) => {
   res.render("register");
 });
 
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", {
+    successRedirect: "/dashboard",
+    failureRedirect: "/users/login",
+    failureFlash: true
+  })(req, res, next);
+});
+
+// POSTS
 router.post("/register", async (req, res) => {
   const { username, password, firstName, lastName, address, email } = req.body;
   let errors = [];

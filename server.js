@@ -10,19 +10,36 @@ const passport = require("passport");
 const flash = require("express-flash");
 const session = require("express-session");
 
-// Dummy data
-const dummy = require("./dummy/dummyData");
-
-// Passport config
-require("./config/passport-config")(passport);
-
 const PORT = process.env.PORT || 8080;
 
 let app = express();
 let db = require("./models");
 
+// bpdy parsing
+app.use(
+  express.urlencoded({
+    extended: false
+  })
+);
+app.use(express.json());
+
+// public files
+app.use(express.static(path.join(__dirname, "public")));
+
+// express session
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET || "secret",
+    resave: false,
+    saveUninitialized: false
+  })
+);
+
+// passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
 // handlebars setup
-app.set("view engine", "handlebars");
 app.engine(
   "handlebars",
   exphbrs({
@@ -41,7 +58,7 @@ app.engine(
         return options.inverse(this);
       },
       ifnotemptystr: function(a, options) {
-        if (a !== "" || a !== undefined) {
+        if (a && a !== "") {
           return options.fn(this);
         }
         return options.inverse(this);
@@ -55,30 +72,7 @@ app.engine(
     }
   })
 );
-
-// bpdy parsing
-app.use(
-  express.urlencoded({
-    extended: false
-  })
-);
-app.use(express.json());
-
-// public files
-app.use(express.static(path.join(__dirname, "public")));
-
-// express session
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false
-  })
-);
-
-// passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
+app.set("view engine", "handlebars");
 
 // connect flash
 app.use(flash());
@@ -102,10 +96,16 @@ app.use("/products", products);
 app.use("/api", api);
 app.use("/", homepage);
 
+// Passport config
+require("./config/passport-config")(passport, db.Customer);
+
+// Dummy data
+const dummy = require("./dummy/dummyData");
+
 // DB SYNC AND START SERVER
 db.sequelize
   .sync({
-    force: true
+    force: false
   })
   .then(() => {
     db.Product.bulkCreate(dummy.products);

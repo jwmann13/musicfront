@@ -93,26 +93,7 @@ module.exports = {
       photo: "http://lorempixel.com/g/200/200"
     }
   ],
-  customers: [
-    {
-      username: "bobsmith12",
-      password: "password",
-      firstName: "Bob",
-      lastName: "Smith",
-      address: "555 Main Street",
-      email: "bobsmith12@dummy.com",
-      cardNumber: "12341234"
-    },
-    {
-      username: "tes",
-      userpassword: "test",
-      firstName: "Test",
-      lastName: "Testerson",
-      address: "555 Test Ave",
-      email: "test@test.edu",
-      cardNumber: "43214321"
-    }
-  ],
+  customers: [],
   reviews: [
     {
       title: "i like this one",

@@ -1,4 +1,3 @@
-
 {{#ifnotundef msg}}
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
     {{msg}}
@@ -8,9 +7,9 @@
 </div>
 {{/ifnotundef}}
 
-{{#ifnotemptystr success_msg}}
+{{#ifnotemptystr msg}}
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{success_msg}}
+    {{msg}}
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
