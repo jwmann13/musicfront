@@ -104,7 +104,7 @@ router.post("/register", async (req, res) => {
 router.get("/logout", (req, res) => {
   req.logOut();
   req.flash("success_msg", "you are logged out");
-  res.redirect("users/login");
+  res.redirect("/users/login");
 });
 
 module.exports = router;

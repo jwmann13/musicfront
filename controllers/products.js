@@ -5,9 +5,16 @@ let db = require("../models");
 router.get("/", (req, res) => {
   db.Product.findAll({}).then(dbProduct => {
     // console.log(dbProduct);
-    res.render("product", {
-      product: dbProduct
-    });
+    if (req.user) {
+      res.render("product", {
+        user: req.user,
+        product: dbProduct
+      });
+    } else {
+      res.render("product", {
+        product: dbProduct
+      });
+    }
   });
 });
 
@@ -19,9 +26,16 @@ router.get("/instrument/:family", (req, res) => {
     }
   }).then(dbProduct => {
     // console.log(dbProduct);
-    res.render("product", {
-      product: dbProduct
-    });
+    if (req.user) {
+      res.render("product", {
+        user: req.user,
+        product: dbProduct
+      });
+    } else {
+      res.render("product", {
+        product: dbProduct
+      });
+    }
   });
 });
 
@@ -34,9 +48,16 @@ router.get("/info/:id", (req, res) => {
     include: [db.Review]
   }).then(dbProduct => {
     // console.log(dbProduct);
-    res.render("product-info", {
-      product: dbProduct
-    });
+    if (req.user) {
+      res.render("product-info", {
+        user: req.user,
+        product: dbProduct
+      });
+    } else {
+      res.render("product-info", {
+        product: dbProduct
+      });
+    }
   });
 });
 
