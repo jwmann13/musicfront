@@ -9,10 +9,8 @@
             <div class="lead">{{product.dataValues.model}}</div>
             <h1 class="display-6">Description</h1>
             <div class="lead">{{product.dataValues.description}}</div>
-            <div class="row">
-                <h1 class="display-6">Price: </h1>
-                <h1 class="display-5">${{product.dataValues.price}}</h1>
-            </div>
+            <h1 class="display-6">Price: </h1>
+            <div class="display-5">${{product.dataValues.price}}</div>
         </div>
         <h1 class="display-6 col-4">Reviews</h1>
         <h1 class="display-6 col-8">
@@ -22,6 +20,7 @@
         {{> review-block}}
         {{/each}}
     </div>
+
     <div>
         <button type="button" class="btn btn-secondary btn-lg btn-block" href="/checkout/{{dataValues.id}}"
             class="product-link" id="add-button" data-id={{product.dataValues.id}}>Add to cart</button>
