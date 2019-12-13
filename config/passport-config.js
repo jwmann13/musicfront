@@ -1,24 +1,23 @@
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");
-const db = require("../models");
 
-function initialize(passport) {
-  const authenticateUser = (username, password, done) => {
-    console.log("PASSPORT", user);
+function initialize(passport, customer) {
+  const authenticateUser = (req, username, password, done) => {
 
-    db.Customer.findOne({
+    customer.findOne({
       where: {
         username: username
       }
     }).then(async user => {
-      if (user === null) {
+      // console.log("PASSPORT", user);
+      if (user.dataValues === null) {
         return done(null, false, {
           message: "no user with that name"
         });
       }
       try {
         if (await bcrypt.compare(password, user.dataValues.password)) {
-          return done(null, user);
+          return done(null, user.dataValues);
         } else {
           return done(null, false, {
             message: "password incorrect"
@@ -30,12 +29,20 @@ function initialize(passport) {
     });
   };
 
-  passport.use(new LocalStrategy(authenticateUser));
+  passport.use('local', new LocalStrategy({
+    usernameField: "username",
+    passwordField: "password",
+    passReqToCallback: true
+  }, authenticateUser));
 
   passport.serializeUser((user, done) => done(null, user.id));
 
   passport.deserializeUser((id, done) =>
-    db.Customer.findById(id, function(err, user) {
+    customer.findOne({
+      where: {
+        id: id
+      }
+    }).then((err, user) => {
       done(err, user);
     })
   );
