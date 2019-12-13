@@ -9,20 +9,34 @@ const { ensureAuthenticated } = require("../config/auth");
 // Load index page
 router.get("/", function(req, res) {
   db.Product.findAll({}).then(function(dbProduct) {
-    res.render("index", {
-      msg: "Welcome!",
-      product: dbProduct
-    });
+    if (req.user) {
+      res.render("index", {
+        msg: `Welcome ${req.user.dataValues.firstName}`,
+        user: req.user,
+        product: dbProduct
+      });
+    } else {
+      res.render("index", {
+        msg: "Welcome!",
+        product: dbProduct
+      });
+    }
   });
 });
 
 // Checkout routing
 router.get("/checkout", (req, res) => {
-  db.Product.findAll({}).then(dbProduct => {
-    // console.log(dbProduct);
-    res.render("checkout", {
-      product: dbProduct
-    });
+  db.Product.findAll({}).then(function(dbProduct) {
+    if (req.user) {
+      res.render("checkout", {
+        user: req.user,
+        product: dbProduct
+      });
+    } else {
+      res.render("checkout", {
+        product: dbProduct
+      });
+    }
   });
 });
 
@@ -32,7 +46,7 @@ router.get(
   ensureAuthenticated,
   (req, res, next) => {
     db.Order.create({
-      value: 10,
+      total: 10,
       CustomerId: req.user.dataValues.id
     });
     next();

@@ -1,5 +1,6 @@
 let router = require("express").Router();
 let db = require("../models");
+let { customerCartAuthenticate } = require("../config/auth");
 
 // Products API
 
@@ -11,34 +12,12 @@ router.get("/products", (req, res) => {
 });
 
 //Get products by category
-router.get("/products/:id", (req, res) => {
-  db.Product.findAll({
+router.get("/products/:id", customerCartAuthenticate, (req, res) => {
+  db.Product.findOne({
     where: {
       id: req.params.id
     }
-  }).then(function(product) {
-    res.json(product);
-  });
-});
-
-//Get products by instrument
-router.get("/products/instrument/:instrument", (req, res) => {
-  db.Product.findAll({
-    where: {
-      instrumentFamily: req.params.instrument
-    }
-  }).then(function(product) {
-    res.json(product);
-  });
-});
-
-//Get products by brand
-router.get("/products/brand/:brand", (req, res) => {
-  db.Product.findAll({
-    where: {
-      color: req.params.brand
-    }
-  }).then(function(product) {
+  }).then(product => {
     res.json(product);
   });
 });

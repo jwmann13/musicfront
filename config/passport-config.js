@@ -11,9 +11,9 @@ function initialize(passport, customer) {
       })
       .then(async user => {
         // console.log("PASSPORT", user);
-        if (user.dataValues === null) {
+        if (user === null) {
           return done(null, false, {
-            message: "no user with that name"
+            msg: "no user with that name"
           });
         }
         try {
@@ -21,7 +21,7 @@ function initialize(passport, customer) {
             return done(null, user.dataValues);
           } else {
             return done(null, false, {
-              message: "password incorrect"
+              msg: "password incorrect"
             });
           }
         } catch (e) {
