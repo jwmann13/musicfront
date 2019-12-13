@@ -93,8 +93,7 @@ module.exports = {
       photo: "http://lorempixel.com/g/200/200"
     }
   ],
-  customers: [
-  ],
+  customers: [],
   reviews: [
     {
       title: "i like this one",
