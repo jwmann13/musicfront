@@ -51,8 +51,8 @@ function initialize(passport, customer) {
           id: id
         }
       })
-      .then((err, user) => {
-        done(err, user);
+      .then(user => {
+        done(null, user);
       })
   );
 }

@@ -27,12 +27,22 @@ router.get("/checkout", (req, res) => {
 });
 
 // dashboard routing
-router.get("/dashboard", ensureAuthenticated, (req, res) => {
-  db.Customer.findOne({}).then(() => {
-    // console.log(dbProduct);
-    res.render("index");
-  });
-});
+router.get(
+  "/dashboard",
+  ensureAuthenticated,
+  (req, res, next) => {
+    db.Order.create({
+      value: 10,
+      CustomerId: req.user.dataValues.id
+    });
+    next();
+  },
+  (req, res) => {
+    res.render("dashboard", {
+      user: req.user
+    });
+  }
+);
 
 // Render 404 page for any unmatched routes
 router.get("*", function(req, res) {
