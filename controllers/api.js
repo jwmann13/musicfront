@@ -10,22 +10,11 @@ router.get("/products", (req, res) => {
   });
 });
 
-//Get single product by name
-router.get("/products/:product", (req, res) => {
-  db.Product.findAll({
-    where: {
-      name: req.params.name
-    }
-  }).then(function(product) {
-    res.json(product);
-  });
-});
-
 //Get products by category
-router.get("/products/info/:id", (req, res) => {
+router.get("/products/:id", (req, res) => {
   db.Product.findAll({
     where: {
-      category: req.params.id
+      id: req.params.id
     }
   }).then(function(product) {
     res.json(product);
