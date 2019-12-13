@@ -9,11 +9,14 @@
             {{> error}}
             {{/each}}
 
+            {{#each successes}}
+            {{> error}}
+            {{/each}}
             <!-- Login Form -->
             <form action="/users/login" method="POST" id="loginForm">
                 <div class="form-group">
-                    <label for="login">Username</label>
-                    <input type="text" id="login" class="" name="login" placeholder="login" required>
+                    <label for="username">Username</label>
+                    <input type="text" id="username" class="" name="username" placeholder="username" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
