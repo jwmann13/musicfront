@@ -22,10 +22,10 @@ router.get("/products/:product", (req, res) => {
 });
 
 //Get products by category
-router.get("/products/category/:category", (req, res) => {
+router.get("/products/info/:id", (req, res) => {
   db.Product.findAll({
     where: {
-      category: req.params.category
+      category: req.params.id
     }
   }).then(function(product) {
     res.json(product);

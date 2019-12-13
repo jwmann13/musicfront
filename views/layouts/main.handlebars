@@ -66,17 +66,17 @@
       {{!-- SEARCH BAR --}}
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fa fa-lg fa-search mr-2"></i>Search</button>
+        <button class="btn btn-outline-secondary my-2 my-sm-0 search-button" type="submit"><i class="fa fa-lg fa-search mr-2"></i>Search</button>
       </form>
       
-      {{!-- SHOPPONG CART --}}
+      {{!-- SHOPPING CART --}}
       <div class="cart-btn">
         <span class="nav-icon">
-          <button class="btn btn-outline-secondary ml-1">
+          <button class="btn btn-outline-secondary ml-1 cart-button">
           <i class="fa fa-lg fa-cart-plus mr-2"></i>
           Shopping Cart
         </span>
-        <div class="cart-items d-inline border border-secondary rounded ml-2">0</div>
+        <div class="cart-items d-inline rounded ml-2">0</div>
         </button>
       </div>
       
@@ -85,16 +85,16 @@
             <span class="close-cart">
              <i class="fa fa-window-close"></i>
             </span>
-            <h3>Your Cart</h3>
+            <h3 class="text-center">Your Cart</h3>
           
         
           <div class="cart-content">
             <div class="cart-item">
-              <img src="#" alt="placeholder">
+              <img src="https://c1.zzounds.com/media/productmedia/fit,2018by3200/quality,85/1_Full_Straight_Front_NA-7bfb82eb45ab99fc16cc1aadd2318c77.jpg" alt="placeholder">
               
               <div>
-                <h5>Product 1</h5>
-                <p>Price: </p>
+                <h5>Electric Guitar</h5>
+                <p>Price: $200.00 </p>
                 <span class="remove-item">Remove <i class="fa fa-sm fa-trash "></i></span>
               </div> 
 
@@ -109,8 +109,8 @@
 
         <div class="cart-footer">
           <h3>Your Total: $<span class="cart-total"></span>0</h3>
-          <button class="btn btn-outline-secondary checkout">Checkout</button>
-          <button class="btn btn-outline-secondary clear-cart">Clear Cart</button>
+          <a href="/checkout"><button class="btn btn-outline-secondary checkout">Checkout</button></a>
+          <button  class="btn btn-outline-secondary clear-cart">Clear Cart</button>
         </div>
       </div>
 
@@ -123,23 +123,11 @@
     </div>
   </nav>
   {{{body}}}
-  <script src="/js/links.js"></script>
-
-
-  <script>
- const cartButton = document.querySelector(".cart-btn")
- const closeButton = document.querySelector(".close-cart")
- const clearButton = document.querySelector(".clear-cart")
- const cartDOM = document.querySelector(".cart")
- const cartOverlay = document.querySelector(".cart-overlay")
- const cartItems = document.querySelector(".cart-items")
- const cartTotal = document.querySelector(".cart-total")
- const cartContent = document.querySelector(".cart-content")
-
-
- 
   
-  </script>
+<script src="/js/mainJS.js"></script>
+<script src="/js/links.js"></script>
+
+
 </body>
 
 </html>
