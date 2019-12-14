@@ -5,6 +5,9 @@ let db = require("../models");
 
 const { ensureAuthenticated } = require("../config/auth");
 
+const str = "Welcome!"
+const welcome = str.fontcolor("white")
+
 // HTML ROUTES
 // Load index page
 router.get("/", function(req, res) {

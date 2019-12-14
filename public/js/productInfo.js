@@ -4,5 +4,7 @@ $("#add-button").on("click", function(event) {
 
   $.get(`/api/products/${id}`, product => {
     console.log(product);
+    const productVar = product
+    $(".cart-content").append(productVar)
   });
 });

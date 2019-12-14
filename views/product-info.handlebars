@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
-        <img class="col-4" src={{product.dataValues.photo}} alt="">
-        <div class="col-8">
+        <img class="col-4 product-image" src={{product.dataValues.photo}} alt="">
+        <div class="col-8 text-light">
             <h1 class="display-4">{{#toUpperCase product.dataValues.name}}{{/toUpperCase}}</h1>
             <h1 class="display-6">Brand</h1>
             <div class="lead">{{product.dataValues.brand}}</div>
@@ -12,8 +12,8 @@
             <h1 class="display-6">Price: </h1>
             <div class="display-5">${{product.dataValues.price}}</div>
         </div>
-        <h1 class="display-6 col-4">Reviews:</h1>
-        <h1 class="display-6 col-8">
+        <h1 class="display-6 col-4 text-light">Reviews:</h1>
+        <h1 class="display-6 col-8 text-light">
             {{product.dataValues.rating}}
         </h1>
         {{#each product.dataValues.Reviews}}
