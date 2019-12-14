@@ -1,24 +1,23 @@
-let cart = []
+let cart = [];
 
 $("#add-button").on("click", function(event) {
   event.preventDefault();
   let id = $(this).data("id");
 
   $.get(`/api/products/${id}`, product => {
-    
-    cart.push(product)
-    console.log(cart)
-    
-    for (var i = 0; i < cart.length; i++){
-        var item = cart[i];
-        var itemImage = item.photo
-        var itemName = item.name
-        var itemBrand = item.brand
-        var itemModel = item.model
-        var itemPrice = item.price
-        var priceNum = parseInt(itemPrice)
-        
-        var product = `
+    cart.push(product);
+    console.log(cart);
+
+    for (var i = 0; i < cart.length; i++) {
+      var item = cart[i];
+      var itemImage = item.photo;
+      var itemName = item.name;
+      var itemBrand = item.brand;
+      var itemModel = item.model;
+      var itemPrice = item.price;
+      var priceNum = parseInt(itemPrice);
+
+      var product = `
         <div class="cart-item">
             <img src=${itemImage} alt="placeholder">
         
@@ -35,9 +34,9 @@ $("#add-button").on("click", function(event) {
             <p class="item-amount">1</p>
             <i class="fa fa-chevron-down"></i>
         </div>
-        `
+        `;
 
-        $(".cart-content").append(product)
-    };
-  })
+      $(".cart-content").append(product);
+    }
+  });
 });

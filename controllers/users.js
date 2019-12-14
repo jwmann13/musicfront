@@ -15,13 +15,24 @@ router.get("/register", forwardAuthenticated, (req, res) => {
   res.render("register");
 });
 
-router.post("/login", (req, res, next) => {
-  passport.authenticate("local", {
-    successRedirect: "/dashboard",
-    failureRedirect: "/users/login",
-    failureFlash: true
-  })(req, res, next);
-});
+router.post(
+  "/login",
+  (req, res, next) => {
+    passport.authenticate("local", {
+      failureRedirect: "/users/login",
+      failureFlash: true
+    })(req, res, next);
+  },
+  (req, res) => {
+    console.log(req.user);
+    db.Order.create({
+      total: 10,
+      CustomerId: req.user.id
+    }).then(() => {
+      res.redirect("/dashboard");
+    });
+  }
+);
 
 // POSTS
 router.post("/register", async (req, res) => {
