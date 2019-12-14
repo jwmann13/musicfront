@@ -5,16 +5,13 @@ let db = require("../models");
 
 const { ensureAuthenticated } = require("../config/auth");
 
-const str = "Welcome!"
-const welcome = str.fontcolor("white")
-
 // HTML ROUTES
 // Load index page
 router.get("/", function(req, res) {
   db.Product.findAll({}).then(function(dbProduct) {
     if (req.user) {
       res.render("index", {
-        msg: `Welcome ${req.user.dataValues.firstName}`,
+        msg: `Welcome ${req.user.dataValues.firstName}!`,
         user: req.user,
         product: dbProduct
       });
