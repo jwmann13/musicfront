@@ -3,6 +3,7 @@ body {
   background-image: url("https://cdn.pixabay.com/photo/2017/10/11/23/35/musical-background-2842924_960_720.jpg");
   background-size: 100%;
   padding-bottom: 30px;
+  color: black;
 }
 
 a.product-link {
