@@ -8,7 +8,8 @@ module.exports = {
       description: "a really bad stinky guitar",
       price: 10.0,
       rating: 1.2,
-      photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Full_front_R9_Les_Paul.jpg/440px-Full_front_R9_Les_Paul.jpg"
+      photo:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Full_front_R9_Les_Paul.jpg/440px-Full_front_R9_Les_Paul.jpg"
     },
     {
       brand: "Fender",
@@ -18,7 +19,8 @@ module.exports = {
       description: "a really good guitar you gotta love it",
       price: 103.5,
       rating: 4.6,
-      photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/1958_Fender_Stratocaster.jpg/440px-1958_Fender_Stratocaster.jpg"
+      photo:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/1958_Fender_Stratocaster.jpg/440px-1958_Fender_Stratocaster.jpg"
     },
     {
       brand: "Yamaha",
@@ -28,7 +30,8 @@ module.exports = {
       description: "bleep bloop i've had the time of my life bleep bloop",
       price: 2000.0,
       rating: 3.9,
-      photo: "https://www.electronicbeats.net/app/uploads/2018/02/Yamaha-DX7-Keyboard-11.jpg"
+      photo:
+        "https://www.electronicbeats.net/app/uploads/2018/02/Yamaha-DX7-Keyboard-11.jpg"
     },
     {
       brand: "Strativarius",
@@ -38,7 +41,8 @@ module.exports = {
       description: "this thing has been around forever",
       price: 1020.9,
       rating: 4.2,
-      photo: "http://www.elizabethpitcairn.com/wp-content/uploads/2014/12/archived-pic-2.jpg"
+      photo:
+        "http://www.elizabethpitcairn.com/wp-content/uploads/2014/12/archived-pic-2.jpg"
     },
     {
       brand: "Rickenbocker",
@@ -48,7 +52,8 @@ module.exports = {
       description: "i think paul mccartney played this guy",
       price: 500.0,
       rating: 2.9,
-      photo: "https://images.reverb.com/image/upload/s--ZOLu8jxh--/f_auto,t_supersize/v1567028321/xmh6y49eiqzoxs5uoivs.jpg"
+      photo:
+        "https://images.reverb.com/image/upload/s--ZOLu8jxh--/f_auto,t_supersize/v1567028321/xmh6y49eiqzoxs5uoivs.jpg"
     },
     {
       brand: "Yamaha",
@@ -58,7 +63,8 @@ module.exports = {
       description: "toot toot saxamaphone",
       price: 368.3,
       rating: 3.8,
-      photo: "https://images-na.ssl-images-amazon.com/images/I/81chkRcnGvL._SY879_.jpg"
+      photo:
+        "https://images-na.ssl-images-amazon.com/images/I/81chkRcnGvL._SY879_.jpg"
     },
     {
       brand: "Korg",
@@ -79,7 +85,8 @@ module.exports = {
         "play the impression that i get by the mighty mighty bosstones",
       price: 150.0,
       rating: 1.8,
-      photo: "https://i5.walmartimages.com/asr/ea5f2caa-cd0c-46b7-a06e-82beb41a95a5_1.6bf16bea53b2822b1cab91857a5791c0.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF"
+      photo:
+        "https://i5.walmartimages.com/asr/ea5f2caa-cd0c-46b7-a06e-82beb41a95a5_1.6bf16bea53b2822b1cab91857a5791c0.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF"
     },
     {
       brand: "Martin",
@@ -90,7 +97,8 @@ module.exports = {
         "thankfully not the one kurt russel smashed in hateful eight",
       price: 986.3,
       rating: 4.9,
-      photo: "https://images.reverb.com/image/upload/s--A1Rfp_YJ--/a_exif,c_limit,e_unsharp_mask:80,f_auto,fl_progressive,g_south,h_620,q_90,w_620/v1418677072/cywa1qyvfrgcan62n9sk.jpg"
+      photo:
+        "https://images.reverb.com/image/upload/s--A1Rfp_YJ--/a_exif,c_limit,e_unsharp_mask:80,f_auto,fl_progressive,g_south,h_620,q_90,w_620/v1418677072/cywa1qyvfrgcan62n9sk.jpg"
     }
   ],
   customers: [],
