@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/jwmann13/musicfront#readme",
   "dependencies": {
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "express": "^4.17.1",
     "express-flash": "0.0.2",
     "express-handlebars": "^3.1.0",
